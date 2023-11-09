@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AllArticle!{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Toutes Mes Création</h1>
+    <div class="row">
+        {% for article in articles %}
+           <div class="col-md-4 mb-4">
+    <div class="card h-100 custom-card">
+        {% if article.getImages() is not empty %}
+            <img src="{{ asset('assets/uploads/products/mini/300x300-' ~ article.getImages().first().getNom()) }}" class="card-img-top img-fluid" alt="{{ article.getTitre }}">
+        {% endif %}
+<div class="card-body">
+    <h5 class="card-title">{{ article.getTitre }}</h5>
+    <p class="card-text overflow-hidden" style="max-height: 100px; position: relative;">
+        {{ article.getDescription }}
+        {% if article.getDescription|length > 100 %}
+            <span style="position: absolute; bottom: 0; right: 0; background: white;">...</span>
+        {% endif %}
+    </p>
+</div>
+
+        <div class="card-footer">
+            <a class="nav-link" href="{{ path('app_voir_article', {'id': article.getId}) }}"><i class="bi bi-gear-fill fa-xs"></i>Voir la création</a>
+        </div>
+    </div>
+</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% include 'pagination/index.html.twig' with {'articles': articles} %}
+        </div>
+    </div>
+</div>
+{% endblock %}

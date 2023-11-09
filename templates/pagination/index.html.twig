@@ -1,0 +1,9 @@
+{% block body %}
+{# templates/pagination/index.html.twig #}
+<div class="pagination">
+    {{ knp_pagination_render(articles, pagination_template ?? null, {
+        'prev_message': 'Précédent',
+        'next_message': 'Suivant'
+    }) }}
+</div>
+{% endblock %}

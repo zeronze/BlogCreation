@@ -1,0 +1,43 @@
+*{
+    
+    font-family: 'Handlee', cursive;
+    font-weight: bold; /* Pour rendre le texte en gras */
+}
+
+
+.custom-card {
+    width: 300px;
+    height: 300px;
+}
+
+
+.banner-img {
+    width: 100%;
+   
+}
+
+.back{
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(to bottom, #feeee7, #ffffff);
+}
+
+
+
+
+h1 {
+    font-family: 'Alex Brush', cursive;
+    font-weight: bold; /* Pour rendre le texte en gras */
+    color: #3f8eb7 !important;
+}
+
+h5{
+    color: #f65815 !important;
+    font-weight: bold; /* Pour rendre le texte en gras */
+}
+
+
+.card-footer a.nav-link {
+    color: #f65815 !important;
+  }
+  

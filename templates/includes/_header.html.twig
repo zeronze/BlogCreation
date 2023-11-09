@@ -1,0 +1,35 @@
+<div class="">
+<img src="{{ asset('images/sur mon blog.png') }}" class="banner-img">
+</div>
+<section class="back"></section>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar mt-5">
+  <div class="container">
+    <a class="navbar-brand" href="{{ path('app_home') }}"><strong>Éloïse's Inspire Creations</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="app_homenavbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ path('app_home') }}">
+            <strong>Accueil</strong>
+          </a>
+        </li>
+        {% if app.user %}
+          {% if 'ROLE_ADMIN' in app.user.roles %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_article_index') }}"><i class="bi bi-gear-fill fa-xs"></i>Administration</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+          {% endif %}
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
