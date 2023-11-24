@@ -3,9 +3,13 @@
 {% block title %}Hello AllArticle!{% endblock %}
 
 {% block body %}
-<div class="container">
-<h1>Toutes Mes Création</h1>
-    <div class="row">
+<div class="container mt-5 ">
+
+<section class="d-flex justify-content-center align-items-center flex-column">
+<h1 class="mt-5 shadow-sm p-3 mb-5 ">Toutes mes créations</h1>
+
+
+    <div class="row mt-5">
         {% for article in articles %}
            <div class="col-md-4 mb-4">
     <div class="card h-100 custom-card">
@@ -36,5 +40,6 @@
             {% include 'pagination/index.html.twig' with {'articles': articles} %}
         </div>
     </div>
+    </section>
 </div>
 {% endblock %}
