@@ -6,7 +6,35 @@
 
 
 <div class="container mt-5">
-{{form(form)}}
+  {{ form(form) }}
+
+    {% if form.vars.submitted and form.vars.valid %}
+        <!-- Afficher les résultats de la recherche -->
+        <h2>Résultats de la recherche :</h2>
+        {% if searchResults|length > 0 %}
+            <div class="row">
+                {% for result in searchResults %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            {% if result.images|length > 0 %}
+                                <img src="{{ asset('assets/uploads/products/mini/300x300-' ~ result.images.first().getNom()) }}" class="card-img-top img-fluid" alt="{{ result.titre }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ result.titre }}</h5>
+                                <p class="card-text">{{ result.description }}</p>
+                                <p class="card-text">Date de publication : {{ result.date|date('Y-m-d') }}</p>
+                                {# Ajoutez d'autres propriétés d'annonce que vous avez dans votre entité #}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Aucun résultat trouvé.</p>
+        {% endif %}
+    {% endif %}
+
+
 <section class="d-flex justify-content-center align-items-center flex-column">
 <h1 class="mt-5 shadow-sm p-3 mb-5">Mes trois dernières créations</h1>
     <div class="row">
