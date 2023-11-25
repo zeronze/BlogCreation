@@ -31,13 +31,14 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
     public function search($mots = null)
     {
-        $qb = $this->createQueryBuilder('a')
-            ->where('a.active = 1');
+        $qb = $this->createQueryBuilder('a');
+
 
         if ($mots !== null) {
-            $qb->andWhere('MATCH(a.titre, a.description) AGAINST(:mots BOOLEAN) > 0')
+            $qb->andWhere('MATCH_AGAINST(a.titre, a.description) AGAINST(:mots BOOLEAN) > 0')
                 ->setParameter('mots', $mots);
         }
 
