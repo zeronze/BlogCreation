@@ -24,7 +24,7 @@ class ArticleRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->select('c.id, c.pseudo, c.email, c.description, c.date')
-            ->join('a.commentaires', 'c') // Assuming 'commentaires' is the property name for the commentaire relationship in the Article entity
+            ->join('a.commentaire', 'c') // Assuming 'commentaires' is the property name for the commentaire relationship in the Article entity
             ->where('a.id = :articleId')
             ->setParameter('articleId', $articleId)
             ->getQuery()
