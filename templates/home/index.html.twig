@@ -10,7 +10,8 @@
 
     {% if form.vars.submitted and form.vars.valid %}
         <!-- Afficher les résultats de la recherche -->
-        <h2>Résultats de la recherche :</h2>
+       <h5>Résultats de la recherche pour "{{ form.vars.data.mots }}" :</h5>
+
         {% if searchResults|length > 0 %}
             <div class="row">
                 {% for result in searchResults %}
@@ -25,6 +26,10 @@
                                 <p class="card-text">Date de publication : {{ result.date|date('Y-m-d') }}</p>
                                 {# Ajoutez d'autres propriétés d'annonce que vous avez dans votre entité #}
                             </div>
+                             <div class="card-footer">
+                     <a class="nav-link" href="{{ path('app_voir_article', {'id': result.getId}) }}"><i class="bi bi-gear-fill fa-xs"></i>Voir la création</a>
+
+                    </div>
                         </div>
                     </div>
                 {% endfor %}
